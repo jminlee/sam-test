@@ -12,18 +12,33 @@ Globals:
         BUCKET_NAME: {bucket_name}
 
 Resources:
-  DynamicDiagnosis:
+  PythonHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: dynamic-diagnosis
-      Handler: dynamic_diagnosis.postDiagnosisQuestion
-      Runtime: nodejs8.10
+      CodeUri: python
+      Handler: handler.dev_test_handler
+      Runtime: python3.6
       Events:
-        GetQuestion:
+        PythonTest:
           Type: Api
           Properties:
-            Path: /next_diagnosis_questions
-            Method: post
+            Path: /python_handler
+            Method: get
+      Policies:
+        - S3ReadPolicy:
+            BucketName: {bucket_name}
+  NodejsHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: nodejs
+      Handler: test_handler.test_handler
+      Runtime: nodejs8.10
+      Events:
+        NodejsTest:
+          Type: Api
+          Properties:
+            Path: /nodejs8.10
+            Method: get
       Policies:
         - S3ReadPolicy:
             BucketName: {bucket_name}
