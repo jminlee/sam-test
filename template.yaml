@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  oracle-api
+  http api service for oracle
+
+Globals:
+  Function:
+    Timeout: 3
+    Environment:
+      Variables:
+        BUCKET_NAME: {bucket_name}
+
+Resources:
+  DynamicDiagnosis:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dynamic-diagnosis
+      Handler: dynamic_diagnosis.postDiagnosisQuestion
+      Runtime: nodejs8.10
+      Events:
+        GetQuestion:
+          Type: Api
+          Properties:
+            Path: /next_diagnosis_questions
+            Method: post
+      Policies:
+        - S3ReadPolicy:
+            BucketName: {bucket_name}
