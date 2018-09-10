@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'oracle-api http api service for oracle
+
+  '
+Globals:
+  Function:
+    Environment:
+      Variables:
+        BUCKET_NAME: riiid.oracle.development
+    Timeout: 3
+Resources:
+  NodejsHandler:
+    Properties:
+      CodeUri: s3://codepipeline-oracle-sam/c129a5be5f7d35e2b3a5a5a942d54aaf
+      Events:
+        NodejsTest:
+          Properties:
+            Method: get
+            Path: /nodejs8.10
+          Type: Api
+      Handler: test_handler.test_handler
+      Policies:
+      - S3ReadPolicy:
+          BucketName: riiid.oracle.development
+      Runtime: nodejs8.10
+    Type: AWS::Serverless::Function
+  PythonHandler:
+    Properties:
+      CodeUri: s3://codepipeline-oracle-sam/46b1b4cf8b95cad847ceefa69eb759c5
+      Events:
+        PythonTest:
+          Properties:
+            Method: get
+            Path: /python_handler
+          Type: Api
+      Handler: handler.dev_test_handler
+      Policies:
+      - S3ReadPolicy:
+          BucketName: riiid.oracle.development
+      Runtime: python3.6
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

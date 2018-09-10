@@ -9,7 +9,7 @@ Globals:
     Timeout: 3
     Environment:
       Variables:
-        BUCKET_NAME: {bucket_name}
+        BUCKET_NAME: riiid.oracle.development
 
 Resources:
   PythonHandler:
@@ -26,7 +26,7 @@ Resources:
             Method: get
       Policies:
         - S3ReadPolicy:
-            BucketName: {bucket_name}
+            BucketName: riiid.oracle.development
   NodejsHandler:
     Type: AWS::Serverless::Function
     Properties:
@@ -41,4 +41,4 @@ Resources:
             Method: get
       Policies:
         - S3ReadPolicy:
-            BucketName: {bucket_name}
+            BucketName: riiid.oracle.development
