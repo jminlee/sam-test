@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/jminlee/sam-test#readme",
   "dependencies": {
-    "jest": "^23.5.0"
+    "jest": "^23.6.0"
   }
 }

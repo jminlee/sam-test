@@ -20,3 +20,8 @@ module.exports.test_handler
     = (event, context, callback) => {
     	test_handler(event, context, callback)
     }
+
+function sum(a, b) {
+  return a + b;
+}
+module.exports = sum;
