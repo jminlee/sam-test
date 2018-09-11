@@ -1,0 +1,9 @@
+version: 0.2
+phases:
+  install:
+    commands:
+    - pip3 install pytest
+    - pytest python/
+artifacts:
+  files:
+  - .
