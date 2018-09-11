@@ -11,7 +11,7 @@ Globals:
 Resources:
   NodejsHandler:
     Properties:
-      CodeUri: s3://codepipeline-oracle-sam/c129a5be5f7d35e2b3a5a5a942d54aaf
+      CodeUri: s3://codepipeline-oracle-sam/7b1a19502749c3170c92f438d84fe26c
       Events:
         NodejsTest:
           Properties:
@@ -26,7 +26,7 @@ Resources:
     Type: AWS::Serverless::Function
   PythonHandler:
     Properties:
-      CodeUri: s3://codepipeline-oracle-sam/46b1b4cf8b95cad847ceefa69eb759c5
+      CodeUri: s3://codepipeline-oracle-sam/880ec794b55051c3f87770923cdb8d30
       Events:
         PythonTest:
           Properties:

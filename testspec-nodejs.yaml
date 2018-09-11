@@ -6,4 +6,4 @@ phases:
     - ./node_modules/.bin/jest nodejs
 artifacts:
   files:
-  - .
+  - '**/*'

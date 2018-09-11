@@ -6,4 +6,4 @@ phases:
     - pytest python/
 artifacts:
   files:
-  - .
+  - *
