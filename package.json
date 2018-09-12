@@ -19,10 +19,9 @@
     "url": "https://github.com/jminlee/sam-test/issues"
   },
   "homepage": "https://github.com/jminlee/sam-test#readme",
-  "dependencies": {
-    "jest": "^23.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "jest": "^23.6.0",
     "mocha": "^5.2.0"
   }
 }
