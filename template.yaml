@@ -15,8 +15,8 @@ Resources:
   PythonHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: python
-      Handler: lambda/handler.dev_test_handler
+      CodeUri: lambda
+      Handler: handler.dev_test_handler
       Runtime: python3.6
       Events:
         PythonTest:
@@ -30,8 +30,8 @@ Resources:
   NodejsHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: nodejs
-      Handler: lambda/test_handler.test_handler
+      CodeUri: lambda
+      Handler: test_handler.test_handler
       Runtime: nodejs8.10
       Events:
         NodejsTest:
