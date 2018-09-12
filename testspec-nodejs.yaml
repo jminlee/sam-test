@@ -3,7 +3,7 @@ phases:
   install:
     commands:
     - npm install
-    - ./node_modules/.bin/jest nodejs
+    - ./node_modules/.bin/jest .
 artifacts:
   files:
   - '**/*'
