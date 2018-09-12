@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-    - npm install
+    - npm install --only=dev
     - ./node_modules/.bin/jest $(find ./ -name '*.test.js') --recursive
     - ./node_modules/.bin/mocha $(find ./ -name '*.spec.js') --recursive
 artifacts:
