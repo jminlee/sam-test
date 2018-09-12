@@ -3,7 +3,8 @@ phases:
   install:
     commands:
     - pip3 install -r requirements.txt -t lambda
-    - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-oracle-sam
+    - pip3 install possum
+    - possum codepipeline-oracle-sam --template-file template.yaml
       --output-template-file outputSamTemplate.yaml
 artifacts:
   type: zip
