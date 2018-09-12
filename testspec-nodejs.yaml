@@ -3,8 +3,8 @@ phases:
   install:
     commands:
     - npm install --only=dev
-    - ./node_modules/.bin/jest $(find ./ -name '*.test.js') --recursive
-    - ./node_modules/.bin/mocha $(find ./ -name '*.spec.js') --recursive
+    - ./node_modules/.bin/jest $(find ./ -name '*.test.js')
+    - ./node_modules/.bin/mocha $(find ./ -name '*.spec.js')
 artifacts:
   files:
   - '**/*'
