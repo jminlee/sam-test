@@ -1,42 +1,44 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'oracle-api http api service for oracle
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  oracle-api
+  http api service for oracle
 
-  '
 Globals:
   Function:
+    Timeout: 3
     Environment:
       Variables:
         BUCKET_NAME: riiid.oracle.development
-    Timeout: 3
+
 Resources:
-  NodejsHandler:
-    Properties:
-      CodeUri: s3://codepipeline-oracle-sam/7b1a19502749c3170c92f438d84fe26c
-      Events:
-        NodejsTest:
-          Properties:
-            Method: get
-            Path: /nodejs8.10
-          Type: Api
-      Handler: test_handler.test_handler
-      Policies:
-      - S3ReadPolicy:
-          BucketName: riiid.oracle.development
-      Runtime: nodejs8.10
-    Type: AWS::Serverless::Function
   PythonHandler:
+    Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://codepipeline-oracle-sam/880ec794b55051c3f87770923cdb8d30
+      CodeUri: s3://codepipeline-oracle-sam/possum-1536736855/8763e45e18e1483c80fb99de5d321fe3.zip
+      Handler: handler.dev_test_handler
+      Runtime: python3.6
       Events:
         PythonTest:
-          Properties:
-            Method: get
-            Path: /python_handler
           Type: Api
-      Handler: handler.dev_test_handler
+          Properties:
+            Path: /python_handler
+            Method: get
       Policies:
       - S3ReadPolicy:
           BucketName: riiid.oracle.development
-      Runtime: python3.6
+  NodejsHandler:
     Type: AWS::Serverless::Function
-Transform: AWS::Serverless-2016-10-31
+    Properties:
+      CodeUri: lambda
+      Handler: test_handler.test_handler
+      Runtime: nodejs8.10
+      Events:
+        NodejsTest:
+          Type: Api
+          Properties:
+            Path: /nodejs8.10
+            Method: get
+      Policies:
+      - S3ReadPolicy:
+          BucketName: riiid.oracle.development
