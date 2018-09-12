@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-    - pip3 install -r requirements.txt
+    - pip3 install -r requirements.txt -t lambda
     - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-oracle-sam
       --output-template-file outputSamTemplate.yaml
 artifacts:

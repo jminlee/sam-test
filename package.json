@@ -21,5 +21,8 @@
   "homepage": "https://github.com/jminlee/sam-test#readme",
   "dependencies": {
     "jest": "^23.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
   }
 }
