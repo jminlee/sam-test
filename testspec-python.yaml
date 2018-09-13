@@ -4,7 +4,7 @@ phases:
     commands:
     - pip3 install pytest
     - cd tests
-    - ./test_python_handler
+    - sh test_python_handler
 artifacts:
   files:
   - '**/*'

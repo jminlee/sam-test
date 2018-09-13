@@ -4,8 +4,8 @@ phases:
     commands:
     - npm install --only=dev
     - cd tests
-    - ./test_jest_handler.sh
-    - ./test_mocha_handler.sh
+    - sh test_jest_handler.sh
+    - sh test_mocha_handler.sh
 artifacts:
   files:
   - '**/*'
