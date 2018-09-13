@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-    - pip3 install -r requirements.txt -t lambda
+    - pip3 install -r requirements.txt -t lambda/
     - pip3 install possum
     - pip3 install pipenv
     - possum codepipeline-oracle-sam --template template.yaml --output-template outputSamTemplate.yaml
