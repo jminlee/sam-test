@@ -1,3 +1,3 @@
 #!/bin/bash
 
-jest spec/mul_jest_test.js
+jest spec/mul_jest.test.js

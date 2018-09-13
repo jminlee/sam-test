@@ -1,3 +1,3 @@
 #!/bin/bash
 
-jest spec/sum_jest_test.js
+jest spec/sum_jest.test.js
