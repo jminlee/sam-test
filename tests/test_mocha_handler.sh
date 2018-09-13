@@ -1,3 +1,3 @@
 #!/bin/bash
 
-../node_modules/.bin/jest tests/spec/sum_jest_test.js
+../node_modules/.bin/mocha spec/sub_mocha_test.js
