@@ -2,11 +2,13 @@ version: 0.2
 phases:
   install:
     commands:
-    - npm install --only=dev
+    - npm install -g jest
+    - npm install -g mocha
     - cd tests
     - sh test_jest_handler.sh
     - sh test_jest_mul_handler.sh
     - sh test_mocha_handler.sh
+    - sh test_mocha_handler_2.sh
 artifacts:
   files:
   - '**/*'
