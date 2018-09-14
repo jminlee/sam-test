@@ -22,5 +22,9 @@
   "dependencies": {
     "aws-sdk": "^2.315.0",
     "rxjs": "^6.3.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0"
   }
 }
