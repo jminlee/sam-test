@@ -10,4 +10,5 @@ artifacts:
   files:
   # - outputSamTemplate.yaml
   - '**/*'
+  name: python-build-$(date +%Y-%m-%d) 
 

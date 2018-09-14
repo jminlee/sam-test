@@ -8,3 +8,4 @@ artifacts:
   files:
   - outputSamTemplate.yaml
   # - '**/*'
+  name: nodejs-build-$(date +%Y-%m-%d) 

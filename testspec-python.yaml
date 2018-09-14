@@ -6,6 +6,8 @@ phases:
     - cd tests
     - sh test_python_handler.sh
     - sh test_second_python_handler.sh
+    - pytest tests
 artifacts:
   files:
   - '**/*'
+  name: python-tested-$(date +%Y-%m-%d) 

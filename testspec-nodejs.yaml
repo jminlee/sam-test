@@ -13,3 +13,4 @@ artifacts:
   types: zip
   files:
   - '**/*'
+  name: nodejs-tested-$(date +%Y-%m-%d) 
