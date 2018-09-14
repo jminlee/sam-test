@@ -10,5 +10,6 @@ phases:
     - sh test_mocha_handler.sh
     - sh test_mocha_handler_2.sh
 artifacts:
+  types: zip
   files:
   - '**/*'
