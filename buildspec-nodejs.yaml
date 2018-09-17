@@ -3,6 +3,8 @@ phases:
   install:
     commands:
     - npm install
+    - aws cloudformation package --template-file template-nodejs.yaml --s3-bucket codepipeline-oracle-sam
+      --output-template-file outputNodejs.yaml
 artifacts:
   type: zip
   files:
