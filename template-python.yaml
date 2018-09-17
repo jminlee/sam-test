@@ -12,7 +12,7 @@ Globals:
         BUCKET_NAME: riiid.oracle.development
 
 Resources:
-  FisrtHandler:
+  PythonS3Handler:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: oracle/python-oracle
