@@ -1,0 +1,102 @@
+'use strict'
+
+const AWS = require('aws-sdk');
+const Rx = require('rxjs')
+const LinearAlgebra = require('linear-algebra')();
+const Matrix = LinearAlgebra.Matrix
+
+const S3 = new AWS.S3()
+
+function readFromS3(s3, bucketName, key) {
+    return Rx.Observable.create((observer) => {
+        try {
+            const params = { Bucket: bucketName, Key: key }
+            s3.getObject(params, (error, data) => {
+                if (error) observer.error(error)
+                else {
+                    observer.next(data.Body)
+                    observer.complete()
+                }
+            })
+        } catch (error) { observer.error(error) }
+    })
+}
+
+function saveToS3(s3, bucketName, key, body) {
+    return Rx.Observable.create((observer) => {
+        try {
+            const params = { Bucket: bucketName, Key: key, Body: body }
+            s3.putObject(params, (error) => {
+                if (error) observer.error(error)
+                else {
+                    observer.complete()
+                }
+            })
+        } catch (error) { observer.error(error) }
+    })
+}
+
+function getS3Object(event) {
+    return getFirstRecord$(event)
+        .do((firstRecord) => {
+            if (firstRecord.eventSource !== "aws:s3") {
+                throw new Error(
+                    `${firstRecord.eventSource}
+                    : ${constant.Error.EVENT_SOURCE_NOT_ACCEPTABLE}`)
+            }
+        })
+        .map(firstRecord => firstRecord.s3)
+}
+
+function getS3Key(event) {
+    return getS3Object$(event, constant)
+        .map(s3 => s3.object.key)
+}
+
+function getS3BucketName(event) {
+    return getS3Object(event)
+            .map(key => key.slice(0, key.lastIndexOf('/')))
+}
+
+function createKey$(path, keyName, compressed = false) {
+    return Rx.Observable.of(`${path}/${keyName}`)
+        .map((key) => {
+            switch (compressed) {
+            case true: return `${key}.gz`
+            default: return key
+            }
+        })
+}
+
+function readMatrixJson(event) {
+    return Rx.Observable
+        .zip(
+            getS3BucketName(event)
+            , getS3Key(event)
+            , (bucketName, key) => ({ bucketName, key})
+        )
+        .flatMap(attribute => readFromS3(S3, attribute.bucketName, attribute.key))
+        .map(data => JSON.parse(data.toString('utf-8')))
+}
+
+function matMul(matrixJson) {
+    return {
+        "matrix": new Matrix(matrixJson.matrix_a)
+        .dot(new Matrix(matrixJson.matrix_b).trans())
+        .toArray()
+    }
+}
+
+
+function mainHanlder(event, callback) {
+    readMatrixJson(event)
+        .map(matrixJson => matMul(matrixJson))
+        .map(matrix => saveToS3(S3, "sam-event-test-bucket", "Event/MatrixResult.json", JSON.stringify(matrix))
+        .subscribe(
+            () => console.log('onNext')
+            , error => callback(error, { message: 'Failed!', event })
+            , () => callback(null, { message: 'Succeed', event })
+        )
+    
+}
+

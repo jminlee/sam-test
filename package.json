@@ -21,6 +21,7 @@
   "homepage": "https://github.com/jminlee/sam-test#readme",
   "dependencies": {
     "aws-sdk": "^2.315.0",
+    "linear-algebra": "^3.1.4",
     "rxjs": "^6.3.2"
   }
 }
