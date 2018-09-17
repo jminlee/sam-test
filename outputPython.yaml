@@ -1,7 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'oracle-api http api service for oracle
+Description: 'oracle-api http api service for oracle'
 
-  '
 Globals:
   Function:
     Environment:

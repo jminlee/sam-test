@@ -14,8 +14,8 @@ Resources:
   NodejsHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: oracle/nodejs-oracle
-      Handler: handler/node_sdk_test_linear_algebra.mainHandler
+      CodeUri: oracle/nodejs-oracle/handler
+      Handler: node_sdk_test_linear_algebra.mainHandler
       Runtime: nodejs8.10
       Events:
         S3Matrix:
