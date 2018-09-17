@@ -1,9 +1,9 @@
 'use strict'
 
 const AWS = require('aws-sdk');
-const Rx = require('rxjs')
+const Rx = require('rxjs');
 const LinearAlgebra = require('linear-algebra')();
-const Matrix = LinearAlgebra.Matrix
+const Matrix = LinearAlgebra.Matrix;
 
 const S3 = new AWS.S3()
 
@@ -49,7 +49,7 @@ function getS3Object(event) {
 }
 
 function getS3Key(event) {
-    return getS3Object$(event, constant)
+    return getS3Object(event, constant)
         .map(s3 => s3.object.key)
 }
 
@@ -58,15 +58,6 @@ function getS3BucketName(event) {
             .map(key => key.slice(0, key.lastIndexOf('/')))
 }
 
-function createKey$(path, keyName, compressed = false) {
-    return Rx.Observable.of(`${path}/${keyName}`)
-        .map((key) => {
-            switch (compressed) {
-            case true: return `${key}.gz`
-            default: return key
-            }
-        })
-}
 
 function readMatrixJson(event) {
     return Rx.Observable
@@ -91,7 +82,7 @@ function matMul(matrixJson) {
 function mainHanlder(event, callback) {
     readMatrixJson(event)
         .map(matrixJson => matMul(matrixJson))
-        .map(matrix => saveToS3(S3, "sam-event-test-bucket", "Event/MatrixResult.json", JSON.stringify(matrix))
+        .map(matrix => saveToS3(S3, "sam-event-test-bucket", "Event/MatrixResult.json", JSON.stringify(matrix)))
         .subscribe(
             () => console.log('onNext')
             , error => callback(error, { message: 'Failed!', event })
