@@ -10,7 +10,7 @@ Globals:
     Environment:
       Variables:
         BUCKET_NAME: riiid.oracle.development
-
+Resources:
   NodejsHandler:
     Type: AWS::Serverless::Function
     Properties:
