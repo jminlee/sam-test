@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'oracle-api http api service for oracle
+
+  '
+Globals:
+  Function:
+    Environment:
+      Variables:
+        BUCKET_NAME: riiid.oracle.development
+    Timeout: 3
+Resources:
+  FisrtHandler:
+    Properties:
+      CodeUri: s3://codepipeline-oracle-sam/8f3fd9c88e284f3b3d1d63aa7ace2772
+      Events:
+        PythonTest:
+          Properties:
+            Topic: arn:aws:sns:ap-northeast-1:340519826608:MatrixPut
+          Type: SNS
+      Handler: handler/s3_event_handler.s3_mat_mul_handler
+      Policies:
+      - S3ReadPolicy:
+          BucketName: riiid.oracle.development
+      Runtime: python3.5
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

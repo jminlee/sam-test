@@ -15,8 +15,8 @@ Resources:
   FisrtHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: oracle/python-oracle/handler
-      Handler: s3_event_handler.s3_mat_mul_handler
+      CodeUri: oracle/python-oracle
+      Handler: handler/s3_event_handler.s3_mat_mul_handler
       Runtime: python3.5
       Events:
         PythonTest:
