@@ -3,7 +3,7 @@ phases:
   install:
     commands:
     - pip3 install -r requirements.txt -t oracle/python-oracle
-    - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-oracle-sam
+    - aws cloudformation package --template-file template-python.yaml --s3-bucket codepipeline-oracle-sam
       --output-template-file outputPython.yaml
 artifacts:
   type: zip
