@@ -8,5 +8,5 @@ phases:
 artifacts:
   type: zip
   files:
-  - outputSamTemplate.yaml
+  - outputNodejs.yaml
   name: nodejs-build-$(date +%Y-%m-%d) 
