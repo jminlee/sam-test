@@ -40,9 +40,7 @@ function getS3Object(event) {
     return getFirstRecord$(event)
         .do((firstRecord) => {
             if (firstRecord.eventSource !== "aws:s3") {
-                throw new Error(
-                    `${firstRecord.eventSource}
-                    : ${constant.Error.EVENT_SOURCE_NOT_ACCEPTABLE}`)
+                throw new Error()
             }
         })
         .map(firstRecord => firstRecord.s3)
