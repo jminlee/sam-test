@@ -91,3 +91,4 @@ function mainHanlder(event, callback) {
     
 }
 
+module.exports.mainHanlder = mainHanlder
