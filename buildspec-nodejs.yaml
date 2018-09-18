@@ -2,11 +2,12 @@ version: 0.2
 phases:
   install:
     commands:
+    - cd oracle/nodejs-oracle
     - npm install
     - aws cloudformation package --template-file template-nodejs.yaml --s3-bucket codepipeline-oracle-sam
       --output-template-file outputNodejs.yaml
 artifacts:
   type: zip
   files:
-  - '**/*'
+  - 'oracle/nodejs-oracle'
   name: nodejs-build-$(date +%Y-%m-%d) 
