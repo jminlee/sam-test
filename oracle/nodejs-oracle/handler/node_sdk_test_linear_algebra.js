@@ -89,4 +89,6 @@ function mainHanlder(event, callback) {
     
 }
 
-module.exports.mainHanlder = mainHanlder
+module.exports.mainHanlder = (event, context, callback)  => {
+    mainHanlder(event, callback)
+}
