@@ -9,5 +9,5 @@ phases:
 artifacts:
   type: zip
   files:
-  - 'oracle/nodejs-oracle'
+  - '**/*'
   name: nodejs-build-$(date +%Y-%m-%d) 
