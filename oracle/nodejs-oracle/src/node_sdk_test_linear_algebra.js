@@ -77,7 +77,7 @@ function matMul(matrixJson) {
 }
 
 
-function mainHanlder(event, callback) {
+function mainHandler(event, callback) {
     readMatrixJson(event)
         .map(matrixJson => matMul(matrixJson))
         .map(matrix => saveToS3(S3, "sam-event-test-bucket", "Event/MatrixResult.json", JSON.stringify(matrix)))
@@ -89,6 +89,6 @@ function mainHanlder(event, callback) {
     
 }
 
-module.exports.mainHanlder = (event, context, callback)  => {
-    mainHanlder(event, callback)
+module.exports.mainHandler = (event, context, callback)  => {
+    mainHandler(event, callback)
 }
