@@ -6,7 +6,6 @@ const LinearAlgebra = require('linear-algebra')();
 const Matrix = LinearAlgebra.Matrix;
 
 const S3 = new AWS.S3()
-import 'rxjs/add/observable/of';
 
 function readFromS3(s3, bucketName, key) {
     return Rx.Observable.create((observer) => {
@@ -38,7 +37,7 @@ function saveToS3(s3, bucketName, key, body) {
 }
 
 function getFirstRecord(event) {
-    return of(event)
+    return Rx.Observable.of(event)
         .map((event) => {
             Validator.validateEvent(event)
             return event.Records[0].Sns.Message
