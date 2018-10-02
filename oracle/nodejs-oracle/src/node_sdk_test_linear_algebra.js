@@ -95,7 +95,7 @@ function matMul(matrixJson) {
 function mainHandler(event, callback) {
     readMatrixJson(event)
         .map(matrixJson => matMul(matrixJson))
-        .map(matrix => saveToS3(S3, "sam-event-test-bucket", "Event/MatrixResult.json", JSON.stringify(matrix)))
+        .map(matrix => saveToS3(S3, "sam.mat.test", "Event/MatrixResult.json", JSON.stringify(matrix)))
         .subscribe(
             () => console.log('onNext')
             , error => callback(error, { message: 'Failed!', event })
