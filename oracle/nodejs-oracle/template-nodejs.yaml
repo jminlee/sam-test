@@ -9,7 +9,7 @@ Globals:
     Timeout: 3
     Environment:
       Variables:
-        BUCKET_NAME: riiid.oracle.development
+        BUCKET_NAME: sam-event-test-bucket
 Resources:
   NodejsHandler:
     Type: AWS::Serverless::Function
@@ -24,4 +24,4 @@ Resources:
             Topic: arn:aws:sns:ap-northeast-1:340519826608:MatrixPut
       Policies:
         - S3ReadPolicy:
-            BucketName: riiid.oracle.development
+            BucketName: sam-event-test-bucket
