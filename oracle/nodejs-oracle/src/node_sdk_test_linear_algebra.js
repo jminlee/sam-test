@@ -57,7 +57,7 @@ function getS3Object(event) {
 }
 
 function getS3Key(event) {
-    return getS3Object(event, constant)
+    return getS3Object(event)
         .map(s3 => s3.object.key)
 }
 
