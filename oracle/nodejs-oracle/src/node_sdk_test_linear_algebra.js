@@ -29,6 +29,7 @@ function saveToS3(s3, bucketName, key, body) {
             s3.putObject(params, (error) => {
                 if (error) observer.error(error)
                 else {
+                    console.log(params)
                     observer.complete()
                 }
             })
