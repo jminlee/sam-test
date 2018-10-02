@@ -76,9 +76,11 @@ function readMatrixJson(event) {
         .flatMap(attribute => {
             console.log(attribute)
             return readFromS3(S3, attribute.bucketName, attribute.key)
-        }
-        )
-        .map(data => JSON.parse(data.toString('utf-8')))
+        })
+        .map(data => {
+            console.log(data)
+            return JSON.parse(data.toString('utf-8'))
+        })
 }
 
 function matMul(matrixJson) {

@@ -1,5 +1,6 @@
+import numpy
 import boto3
 
-def s3_mat_mul_handler(event, callback):
+def mainHandler(event, callback):
     print(event)
     return callback()
