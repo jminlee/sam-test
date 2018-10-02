@@ -61,8 +61,8 @@ function getS3Key(event) {
 }
 
 function getS3BucketName(event) {
-    return getS3Object(event)
-            .map(key => {
+    return getS3Key(event)
+            .map(key=> {
                 console.log(key)
                 return key.slice(0, key.lastIndexOf('/'))})
 }
