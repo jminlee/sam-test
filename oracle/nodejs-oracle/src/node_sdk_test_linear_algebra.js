@@ -39,7 +39,6 @@ function saveToS3(s3, bucketName, key, body) {
 function getFirstRecord(event) {
     return Rx.Observable.of(event)
         .map((event) => {
-            Validator.validateEvent(event)
             return event.Records[0].Sns.Message
         })
         .map(JSON.parse)
