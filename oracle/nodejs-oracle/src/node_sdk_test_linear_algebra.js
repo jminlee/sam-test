@@ -73,7 +73,11 @@ function readMatrixJson(event) {
             , getS3Key(event)
             , (bucketName, key) => ({ bucketName, key})
         )
-        .flatMap(attribute => readFromS3(S3, attribute.bucketName, attribute.key))
+        .flatMap(attribute => {
+            console.log(attribute)
+            return readFromS3(S3, attribute.bucketName, attribute.key)
+        }
+        )
         .map(data => JSON.parse(data.toString('utf-8')))
 }
 
