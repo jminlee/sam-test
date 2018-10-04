@@ -96,10 +96,8 @@ function matMul(matrixJson) {
 function mainHandler(event, callback) {
     readMatrixJson(event)
         .map(matrixJson => matMul(matrixJson))
-        .flatMap(matrix => {
-            console.log(matrix)
-            return saveToS3(S3, "sam.mat.test", "Event/MatrixResult.json", JSON.stringify(matrix))
-        })
+        .flatMap(matrix => saveToS3(S3, "sam.mat.test", "Event/MatrixResult.json", JSON.stringify(matrix))
+        )
         .subscribe(
             () => console.log('onNext')
             , error => callback(error, { message: 'Failed!', event })
