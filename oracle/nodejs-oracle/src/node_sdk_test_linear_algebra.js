@@ -96,7 +96,7 @@ function matMul(matrixJson) {
 function mainHandler(event, callback) {
     readMatrixJson(event)
         .map(matrixJson => matMul(matrixJson))
-        .map(matrix => {
+        .flatMap(matrix => {
             console.log(matrix)
             return saveToS3(S3, "sam.mat.test", "Event/MatrixResult.json", JSON.stringify(matrix))
         })
