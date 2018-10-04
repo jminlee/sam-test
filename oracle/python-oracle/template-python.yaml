@@ -15,7 +15,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
-      Handler: src/node_sdk_test_linear_algebra.mainHandler
+      Handler: src/python_sdk_handler.mainHandler
       Runtime: python3.6 
       Events:
         S3Matrix:
