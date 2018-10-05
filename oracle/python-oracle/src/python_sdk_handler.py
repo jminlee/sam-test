@@ -2,6 +2,8 @@ import numpy as np
 import boto3
 import json
 
+s3_client = boto3.client("s3")
+
 def main_handler(event, callback):
 
     matrix_json = get_matrix_json()
@@ -14,11 +16,17 @@ def main_handler(event, callback):
 
     print(result)
 
+    save_matrix_json(result)
+
     return "Cool"
 
 
+def save_matrix_json(result):
+    responce = s3_client.put_object(
+        Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=result
+    )
+
 def get_matrix_json():
-    s3_client = boto3.client("s3")
 
     responce = s3_client.get_object(
         Bucket="sam.mat.test"
