@@ -8,5 +8,5 @@ def main_handler(event, callback):
     return callback()
 
 def check_numpy():
-    np_arr = numpy.array()
+    np_arr = numpy.array([])
     print(np_arr)
