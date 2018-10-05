@@ -17,7 +17,7 @@ def main_handler(event, callback):
     print(result)
 
     save_matrix_json({
-        'result:'result
+        'result': result
     })
 
     return "Cool"
