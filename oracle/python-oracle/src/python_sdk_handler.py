@@ -29,4 +29,4 @@ def get_matrix_json():
         , Key="Event/Matrix.json"
     )
 
-    return json.load(responce['Body'].read())
+    return json.loads(responce['Body'].read())
