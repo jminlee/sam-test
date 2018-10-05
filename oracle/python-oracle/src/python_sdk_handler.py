@@ -6,9 +6,9 @@ def main_handler(event, callback):
 
     matrix_json = get_matrix_json()
 
-    matrix_a = np.array(matrix['matrix_a'])
+    matrix_a = np.array(matrix_json['matrix_a'])
 
-    matrix_b = np.array(matrix['matrix_b'])
+    matrix_b = np.array(matrix_json['matrix_b'])
 
     result = np.matmul(matrix_a, matrix_b)
 
