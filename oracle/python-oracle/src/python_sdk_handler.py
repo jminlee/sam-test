@@ -5,7 +5,15 @@ import json
 def main_handler(event, callback):
 
     check_numpy()
-    print(get_matrix_json())
+    matrix_json = get_matrix_json()
+
+    matrix_a = np.array(matrix['matrix_a'])
+
+    matrix_b = np.array(matrix['matrix_b'])
+
+    result = numpy.matmul(matrix_a, matrix_b)
+
+    print(result)
 
     return "Cool"
 
