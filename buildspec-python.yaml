@@ -2,6 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
+    - cd oracle/python-oracle
     - pip3 install -r requirements.txt -t oracle/python-oracle
     - aws cloudformation package --template-file template-python.yaml --s3-bucket codepipeline-oracle-sam
       --output-template-file outputPython.yaml
