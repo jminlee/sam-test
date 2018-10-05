@@ -16,14 +16,16 @@ def main_handler(event, callback):
 
     print(result)
 
-    save_matrix_json(result)
+    save_matrix_json({
+        'result:'result
+    })
 
     return "Cool"
 
 
 def save_matrix_json(result):
     responce = s3_client.put_object(
-        Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=result
+        Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=str(result)
     )
 
 def get_matrix_json():
