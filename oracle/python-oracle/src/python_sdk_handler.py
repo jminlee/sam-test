@@ -20,4 +20,4 @@ def get_matrix_json():
         , Key="Event/Matrix.json"
     )
 
-    print(responce)
+    return responce['Body'].read()
