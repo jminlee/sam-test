@@ -9,7 +9,7 @@ phases:
 artifacts:
   type: zip
   files:
-  - outputPython.yaml
-  # - '**/*'
+  # - outputPython.yaml
+  - '**/*'
   name: python-build-$(date +%Y-%m-%d) 
 
