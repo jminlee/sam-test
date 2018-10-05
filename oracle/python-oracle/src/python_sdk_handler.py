@@ -1,5 +1,6 @@
 import numpy
 import boto3
+import json
 
 def main_handler(event, callback):
 
@@ -20,4 +21,4 @@ def get_matrix_json():
         , Key="Event/Matrix.json"
     )
 
-    return responce['Body'].read()
+    return json.load(responce['Body'].read())
