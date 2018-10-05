@@ -15,7 +15,7 @@ def main_handler(event, callback):
     result = np.matmul(matrix_a, np.transpose(matrix_b))
 
     save_matrix_json({
-        'result': result
+        'result': result.tolist()
     })
 
     return "Cool"
@@ -23,7 +23,7 @@ def main_handler(event, callback):
 
 def save_matrix_json(result):
     responce = s3_client.put_object(
-        Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=str(result.tolist())
+        Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=str(result)
     )
 
 def get_matrix_json():
