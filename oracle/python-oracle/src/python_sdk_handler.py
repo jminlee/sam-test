@@ -10,7 +10,7 @@ def main_handler(event, callback):
 
     matrix_b = np.array(matrix_json['matrix_b'])
 
-    result = np.matmul(matrix_a, matrix_b.trans())
+    result = np.matmul(matrix_a, np.transpose(matrix_b))
 
     print(result)
 
