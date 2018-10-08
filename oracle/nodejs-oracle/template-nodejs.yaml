@@ -17,6 +17,8 @@ Resources:
       CodeUri: .
       Handler: src/node_sdk_test_linear_algebra.mainHandler
       Runtime: nodejs8.10
+      Timeout: 300
+      MemorySize: 1024
       Events:
         S3Matrix:
           Type: SNS

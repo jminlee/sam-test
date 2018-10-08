@@ -17,6 +17,8 @@ Resources:
       CodeUri: src
       Handler: python_sdk_handler.main_handler
       Runtime: python3.6 
+      Timeout: 300
+      MemorySize: 1024
       Events:
         S3Matrix:
           Type: SNS
