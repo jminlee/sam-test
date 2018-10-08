@@ -16,7 +16,7 @@ Resources:
     Properties:
       CodeUri: src
       Handler: java_sdk_handler.RequestHandler
-      Runtime: Java8
+      Runtime: java8
       Events:
         S3Matrix:
           Type: SNS
