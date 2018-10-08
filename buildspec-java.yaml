@@ -10,4 +10,4 @@ artifacts:
   type: zip
   files:
   - '**/*'
-  name: nodejs-build-$(date +%Y-%m-%d) 
+  name: java-build-$(date +%Y-%m-%d) 

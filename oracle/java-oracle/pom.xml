@@ -16,6 +16,12 @@
     </dependency>
   </dependencies>
 
+  <dependency>
+    <groupId>org.ejml</groupId>
+    <artifactId>ejml-all</artifactId>
+    <version>0.36</version>
+  </dependency>
+
   <build>
     <plugins>
       <plugin>
