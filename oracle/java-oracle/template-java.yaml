@@ -14,7 +14,7 @@ Resources:
   JavaHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/lambda-java-example-1.0-SNAPSHOT.jar
+      CodeUri: target/lambda-java-example-1.0.jar
       Handler: testApp.SdkHandler::RequestHandler
       Runtime: java8
       Events:
