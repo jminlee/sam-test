@@ -27,3 +27,19 @@ Resources:
       Policies:
         - S3ReadPolicy:
             BucketName: sam.mat.test
+  PythonNoNumpyHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src
+      Handler: python_no_numpy_handler.main_handler
+      Runtime: python3.6 
+      Timeout: 300
+      MemorySize: 1024
+      Events:
+        S3Matrix:
+          Type: SNS
+          Properties:
+            Topic: arn:aws:sns:ap-northeast-1:340519826608:MatrixPut
+      Policies:
+        - S3ReadPolicy:
+            BucketName: sam.mat.test
