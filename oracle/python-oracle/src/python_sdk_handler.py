@@ -21,6 +21,15 @@ def main_handler(event, callback):
     return "Cool"
 
 
+def multiply(v, G):
+    result = []
+    for i in range(len(G[0])):  # this loops through columns of the matrix
+        total = 0
+        for j in range(len(v)):  # this loops through vector coordinates & rows of matrix
+            total += v[j] * G[j][i]
+        result.append(total)
+    return result
+
 def save_matrix_json(result):
     responce = s3_client.put_object(
         Bucket="sam.mat.test", Key="Event/MatrixResultFromPython.json", Body=str(result)

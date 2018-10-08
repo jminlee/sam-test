@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  oracle-api
+  http api service for oracle
+
+Globals:
+  Function:
+    Timeout: 30
+    Environment:
+      Variables:
+        BUCKET_NAME: sam.mat.test
+Resources:
+  PythonHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src
+      Handler: java_sdk_handler.RequestHandler
+      Runtime: Java8
+      Events:
+        S3Matrix:
+          Type: SNS
+          Properties:
+            Topic: arn:aws:sns:ap-northeast-1:340519826608:MatrixPut
+      Policies:
+        - S3ReadPolicy:
+            BucketName: sam.mat.test

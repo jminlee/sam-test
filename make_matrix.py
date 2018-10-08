@@ -6,20 +6,20 @@ matrix_a = []
 
 for i in range(100):
     vector = []
-    for j in range(10):
+    for j in range(100):
         vector.append(element)
         element = element + 1
     matrix_a.append(vector)
 
 print(matrix_a)
 
-element = 999
+element = 9999
 
 matrix_b = []
 
 for i in range(100):
     vector = []
-    for j in range(10):
+    for j in range(100):
         vector.append(element)
         element = element - 1
     matrix_b.append(vector)
