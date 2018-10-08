@@ -4,22 +4,22 @@ element = 0
 
 matrix_a = []
 
-for i in range(100):
+for i in range(1000):
     vector = []
-    for j in range(100):
+    for j in range(1000):
         vector.append(element)
         element = element + 1
     matrix_a.append(vector)
 
 print(matrix_a)
 
-element = 9999
+element = 999999
 
 matrix_b = []
 
-for i in range(100):
+for i in range(1000):
     vector = []
-    for j in range(100):
+    for j in range(1000):
         vector.append(element)
         element = element - 1
     matrix_b.append(vector)
