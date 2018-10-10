@@ -22,7 +22,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 
 public class SdkHandler implements RequestHandler<Object, Object> {
 
-    public Object handleRequest(Object request, Context context) {
+    public Object handleRequest(Object request, Object context) {
 
         // String clientRegion = "ap-northest-1";
         // String bucketName = "sam.mat.test";
