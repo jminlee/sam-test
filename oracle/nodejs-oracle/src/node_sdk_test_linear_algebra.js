@@ -16,6 +16,7 @@ function readFromS3(s3, bucketName, key) {
                 else {
                     observer.next(data.Body)
                     observer.complete()
+                    
                 }
             })
         } catch (error) { observer.error(error) }
